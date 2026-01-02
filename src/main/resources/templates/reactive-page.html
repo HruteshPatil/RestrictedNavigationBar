@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reactive Thymeleaf</title>
+</head>
+<body>
+    <h1>Streaming Data Tasks</h1>
+    <ul>
+        <li th:each="item : ${dataStream}" th:text="${item}">Loading...</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div layout:fragment="content">
+    <h2>Product Pricing</h2>
+    
+    <p>
+        US Pricing: <span th:text="${#format.formatCurrency(1250.50, 'USD')}"></span>
+    </p>
+    
+    <p>
+        India Pricing: <span th:text="${#format.formatCurrency(1250.50, 'INR')}"></span>
+    </p>
+
+    <p th:if="${price != null}">
+        Your Price: <b th:text="${#format.formatCurrency(price, 'GBP')}"></b>
+    </p>
+</div>
+	
+</body>
+</html>

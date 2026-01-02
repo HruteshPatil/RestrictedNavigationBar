@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:myApp="http://www.example.com" 
+      layout:decorate="~{layouts/master}">
+      <head>
+      
+      <style type="text/css">
+      /* This matches the class name your Java Processor injects */
+.important-highlight {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid orange;
+}
+      
+      </style>
+      </head>
+<body>
+
+    <div layout:fragment="content">
+
+        <nav style="background: #f4f4f4; padding: 10px; border-bottom: 1px solid #ccc;">
+            <a th:href="@{/}">Home</a> | 
+            <a th:href="@{/mod}" th:if="${isMod}">Moderator Panel</a> 
+            <span th:if="${isMod}">|</span> 
+            <a th:href="@{/admin}" th:if="${isAdmin}">Admin Dashboard</a>
+
+            <div class="auth-box" style="float: right;">
+                <a th:href="@{/login}" th:unless="${isLoggedIn}">Login</a>
+                <div th:if="${isLoggedIn}" style="display: inline;">
+                    <span>Welcome, <b th:text="${username}">User</b></span>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div style="margin-top: 20px;">
+            <div myApp:highlight>This text will be highlighted.</div>
+        </div>
+
+        <h1>Welcome to the Production App</h1>
+
+    </div> 
+    </body>
+</html>
